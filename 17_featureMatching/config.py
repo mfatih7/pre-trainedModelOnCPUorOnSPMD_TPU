@@ -29,21 +29,24 @@ class Config:
             
             self.home_dir = os.path.expanduser('~')
             
-            self.storage_local_or_bucket = 'local'  
+            self.input_data_storage_local_or_bucket = 'local' 
+            self.output_data_storage_local_or_bucket = 'local'
             
             self.TPU_DEBUG = 0
             # self.TPU_DEBUG = 1
             self.tpu_debug_path = os.path.join(self.home_dir, 'tpu_debug')                
         else:
-            self.storage_local_or_bucket = 'local'
+            self.input_data_storage_local_or_bucket = 'local'
+            self.output_data_storage_local_or_bucket = 'local'
         
-        self.first_experiment = 1000
-        
-        
+        # self.first_experiment = 1000
         # self.model_type = 'model_exp20'
-        # self.model_exp_no = 4  #0,1,3,4,10,11,13,14,20,21,23,24  
+        # self.model_exp_no = 324
+
+        self.first_experiment = 1001
         self.model_type = 'model_exp23'
-        self.model_exp_no = 324  #0,1,3,4,10,11,13,14,20,21,23,24
+        self.model_exp_no = 324
+
         if( self.model_type == 'LTFGC' or self.model_type == 'OANET' or self.model_type == 'OANET_Iter'):
             self.input_type = 'n_to_n'
         else:
@@ -152,10 +155,8 @@ class Config:
                                 self.pickle_set_no = 1
                                 self.num_workers = 1
                             elif( self.tpu_cores == 'spmd' ):
-                                if(self.bucket_name == 'bucket-us-central2-relativeposeestimation'):
-                                    self.pickle_set_no = 2
-                                else:
-                                    self.pickle_set_no = 1
+                                self.pickle_set_no = 1
+
                                 if( self.en_tl_on_cpu == 0):
                                     self.num_workers = 1
                                 else:

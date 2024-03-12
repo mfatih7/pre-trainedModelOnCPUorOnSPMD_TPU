@@ -13,7 +13,7 @@ def get_model( config, model_type, N, model_width, en_checkpointing ):
         
         if( model_type == 'model_exp20' ):
             return model_exp20_get_model( config, N, model_width, en_checkpointing )
-		elif( model_type == 'model_exp23' ):
+        elif( model_type == 'model_exp23' ):
             return model_exp23_get_model( config, N, model_width, en_checkpointing )
         
         else:
